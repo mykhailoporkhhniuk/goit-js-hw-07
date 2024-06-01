@@ -10,7 +10,6 @@ const containerEl = document.querySelector('#boxes');
 
 buttonEl[0].addEventListener('click', () => {
   if (inputEl.value > 0 && inputEl.value <= 100) {
-    containerEl.innerHTML = '';
     createBoxes(inputEl.value);
   }
 })
@@ -19,12 +18,14 @@ function createBoxes(amount) {
   let i = 0;
   let x = 30;
   let y = 30;
+  let markup = '';
   while (i < amount) {
-    containerEl.insertAdjacentHTML("beforeend", `<div style=width:${x}px;height:${y}px;background-color:${getRandomHexColor()};></div>`);
+    markup += `<div style=width:${x}px;height:${y}px;background-color:${getRandomHexColor()};></div>`;
     i++;
     x = x + 10;
     y = y + 10;
   }
+  containerEl.innerHTML = markup;
 }
 
 buttonEl[1].addEventListener('click', () => {
